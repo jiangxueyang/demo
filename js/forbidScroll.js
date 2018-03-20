@@ -2,6 +2,7 @@ function ForbidScroll(option) {
     option = option || {};
     var forbidScrollWrap = option.forbidScrollWrap || '.forbid-scroll-wrap',
         canScrollWrap = option.canScrollWrap || '.can-scroll-wrap';
+    this.canScrollWrap = canScrollWrap;
     this.node1 = document.querySelector(canScrollWrap);
     this.node2 = document.querySelector(forbidScrollWrap);
 
@@ -11,7 +12,7 @@ ForbidScroll.prototype.initForbid = function () {
     var node1 = this.node1,
         node2 = this.node2;
     if(!node1  || !node2 ) return;
-    var startY = 0;
+    var startY = 0,canScrollWrap = this.canScrollWrap;
     node1.scrollTop = 0;
     var offsetHeight = node1.offsetHeight,
         scrollHeight = node1.scrollHeight;
@@ -50,7 +51,7 @@ ForbidScroll.prototype.initForbid = function () {
     }, false)
 }
 
-//解除禁止
+//
 
 ForbidScroll.prototype.relieveForbid = function () {
     var node1 = this.node1,
